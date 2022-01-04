@@ -1,0 +1,129 @@
+body {
+  /* 기본 가로사이즈는 auto로 최대한 늘어나려는 속성을 보입니다.  */
+  /* width: auto; */
+  /* 화면에 보이는 전체영역의 (브라우저의) 높이를 height로 줍니다.  */
+  height: 100vh;
+  background-image: url("images/bg.jpg");
+  /* 더 넓은 이미지에 맞게 화면출력 */
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* 배경이미지는 고정되어 있어 스크롤을 해도 배경이미지는 모자라도 딸려 올라가지 않게 됩니다. */
+  background-attachment: fixed;
+}
+
+.container {
+  padding: 50px 0;
+}
+
+.container .heroes {
+  display: flex;
+  flex-wrap: wrap;
+  /* background-color: orange; */
+  justify-content: center;
+  /* 최대 너비 700px 그 이하로 줄어들 경우 flex-wrap 발생.  */
+  max-width: 660px;
+  /* 블록요소에 width 가 있고 (가로사이즈가 명시되어있고) auto를 넣으면 좌우로 가운데 정렬 */
+  /* 위아래는 0을 줌(margin 없음, 좌우는 브라우저가 알아서 여백주도록 설정) */
+  margin: 0 auto;
+  /* padding 위아래 40px 좌우 20px 을 주어 여유를 만듦. */
+  padding: 40px 20px;
+}
+
+.container .heroes .hero {
+  width: 80px;
+  height: 84px;
+  margin: 4px;
+  border: 3px solid #fff; /* 같은 값이 반복될 때는 3개로 축약가능 ffffff => fff */
+  border-radius: 10px;
+  /* 요소의 크기 사이즈 지정. 테두리떄문에 늘어나지 않도록 설정. */
+  box-sizing: border-box;
+  background-color: #555;
+  /* x축으로 기울임.  -14도 만큼 기울임 */
+  transform: skewX(-14deg);
+  /* 넘치는 부분 잘라내겠다고 설정. */
+  overflow: hidden;
+  /* transition 0.1s 추가 */
+  /* 
+  transition 특정화해서 요소가커지는 것에 .1s 부여
+  배경색은 천천히 바뀌도록 .6s 부여 
+  */
+  transition: 
+    transform .1s,
+    background-color .6s;
+}
+
+
+.container .heroes .hero:hover {
+  /* 마우스 올리면 요소 배경색 변함 */
+  background-color: #ff9c00;
+  /* 마우스 요소가 1.3배 커지도록 scale() 사용  */
+  /* skewX(-15deg) 작성해야 hover에서 덮어써질때도 동일하게 기울임 부여 */
+  transform: skewX(-14deg) scale(1.3);
+  /* z-index 값을 0보다 큰 값을 부여해서 히어로요소를 앞으로 띄움. */
+  z-index: 1;
+}
+
+.container .heroes .hero .image {
+  /* 가로세로값을 명시해야 이미지가 출력됩니다. */
+  /* 이미지 요소의 가로너비는 140%; height는 100% 설정 */
+  /* 이미지가 크기가 크다보니깐 일부만 출력되므로 background-position: center; 부여해서 가운데에 위치하도록 합니다. */
+  width: 140%;
+  height: 100%;
+  background-position: center;
+  /* 가로너비 90px로 축소 */
+  background-size: 90px;
+  /* 이미지 반복 x */
+  background-repeat: no-repeat;
+  /* 이미지는 -14도 찌그러지지 않도록 설정 */
+  /* 이제 skewx로 14도를 기울여서 원상태로 복귀하도록 설정.(부모요소 기울임의 반댓값입력) */
+  /* translateX(-16px)을 통해서 이미지를 x축으로 -16px이동시킴 */
+  transform: skewX(14deg) translateX(-16px);
+}
+
+/* 반복되는 내용을 길어지도록 하면 보기좋지못함. 속성이하나일때 라는 조건이 있고, 
+nth-child(1)부터 nth-child(32)까지 반복될것이기 때문에  가독성을 위해 한줄로 작성해줍니다.*/ 
+/* 나중에는 scss라는 css전처리기(preprocessor)를 통해서 조금 더 쉽게 관리할 수 있습니다. */
+.container .heroes .hero:nth-child(1) .image {background-image: url('images/hero1.png');}
+.container .heroes .hero:nth-child(2) .image {background-image: url('images/hero2.png');}
+.container .heroes .hero:nth-child(3) .image {background-image: url('images/hero3.png');}
+.container .heroes .hero:nth-child(4) .image {background-image: url('images/hero4.png');}
+.container .heroes .hero:nth-child(5) .image {background-image: url('images/hero5.png');}
+.container .heroes .hero:nth-child(6) .image {background-image: url('images/hero6.png');}
+.container .heroes .hero:nth-child(7) .image {background-image: url('images/hero7.png');}
+.container .heroes .hero:nth-child(8) .image {background-image: url('images/hero8.png');}
+.container .heroes .hero:nth-child(9) .image {background-image: url('images/hero9.png');}
+.container .heroes .hero:nth-child(10) .image {background-image: url('images/hero10.png');} 
+.container .heroes .hero:nth-child(11) .image {background-image: url('images/hero11.png');}
+.container .heroes .hero:nth-child(12) .image {background-image: url('images/hero12.png');}
+.container .heroes .hero:nth-child(13) .image {background-image: url('images/hero13.png');}
+.container .heroes .hero:nth-child(14) .image {background-image: url('images/hero14.png');}
+.container .heroes .hero:nth-child(15) .image {background-image: url('images/hero15.png');}
+.container .heroes .hero:nth-child(16) .image {background-image: url('images/hero16.png');}
+.container .heroes .hero:nth-child(17) .image {background-image: url('images/hero17.png');}
+.container .heroes .hero:nth-child(18) .image {background-image: url('images/hero18.png');}
+.container .heroes .hero:nth-child(19) .image {background-image: url('images/hero19.png');}
+.container .heroes .hero:nth-child(20) .image {background-image: url('images/hero20.png');}
+.container .heroes .hero:nth-child(21) .image {background-image: url('images/hero21.png');}
+.container .heroes .hero:nth-child(22) .image {background-image: url('images/hero22.png');}
+.container .heroes .hero:nth-child(23) .image {background-image: url('images/hero23.png');}
+.container .heroes .hero:nth-child(24) .image {background-image: url('images/hero24.png');}
+.container .heroes .hero:nth-child(25) .image {background-image: url('images/hero25.png');}
+.container .heroes .hero:nth-child(26) .image {background-image: url('images/hero26.png');}
+.container .heroes .hero:nth-child(27) .image {background-image: url('images/hero27.png');}
+.container .heroes .hero:nth-child(28) .image {background-image: url('images/hero28.png');}
+.container .heroes .hero:nth-child(29) .image {background-image: url('images/hero29.png');}
+.container .heroes .hero:nth-child(30) .image {background-image: url('images/hero30.png');}
+.container .heroes .hero:nth-child(31) .image {background-image: url('images/hero31.png');}
+.container .heroes .hero:nth-child(32) .image {background-image: url('images/hero32.png');}
+
+.container .logo {
+  max-width: 300px;
+  margin: 0 auto;
+  /* 내부여백  20px 추가 */
+  padding: 0 20px;
+}
+
+.logo img {
+  /* logo의 최대 너비에 맞게 출력 300px이상은 출력될 수 없습니다. */
+  width: 100%;
+}
